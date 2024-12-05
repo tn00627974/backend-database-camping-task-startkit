@@ -271,7 +271,7 @@ WHERE user_id =(SELECT id FROM "USER" WHERE  email = 'wXlTq@hexschooltest.io')AN
 -- 5-6. 查詢：計算用戶王小明的購買堂數，顯示須包含以下欄位： user_id , total。 (需使用到 SUM 函式與 Group By)
 
 SELECT 
-	user_id  AS 購買人,
+	user_id ,
 	SUM(purchased_credits) AS total
 FROM "CREDIT_PURCHASE"
 WHERE user_id = (SELECT id FROM "USER" WHERE  email = 'wXlTq@hexschooltest.io')
@@ -280,7 +280,7 @@ GROUP BY user_id;
 -- 5-7. 查詢：計算用戶王小明的已使用堂數，顯示須包含以下欄位： user_id , total。 (需使用到 Count 函式與 Group By)
 
 SELECT 
-	user_id  AS 購買人,
+	user_id ,
 	COUNT(*) AS total
 FROM "COURSE_BOOKING"
 WHERE user_id = (SELECT id FROM "USER" WHERE  email = 'wXlTq@hexschooltest.io') AND status != '課程已取消'
